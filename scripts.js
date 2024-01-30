@@ -8,12 +8,18 @@ function convertValues() {
     const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
     const currencyValueConverted = document.querySelector(".currency-value")
 
-    console.log(currencySelect.value)
-    const dolarAtual = 4.96
-    const euroAtual = 6.2
+    console.log(currencySelect.value) 
+    
+    //Valores do dia 01.30.2024
+    const dolarAtual = 4.95
+    const euroAtual = 5.37
+    const libraAtual = 6.29
+    const bitcoinAtual = 215286.49
 
     const convertedDolar = inputCurrencyValue / dolarAtual
     const convertedEuro = inputCurrencyValue / euroAtual
+    const convertedLibra = inputCurrencyValue / libraAtual
+    const convertedBitcoin = inputCurrencyValue / bitcoinAtual
 
     currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
@@ -35,8 +41,19 @@ function convertValues() {
             currency: "EUR"
         }).format(convertedEuro)
     }
+    if (currencySelect.value == "libra") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
+           style: "currency",
+           currency: "GBP"
+       }).format(convertedLibra)
+    }
+    if (currencySelect.value == "bitcoin") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+           style: "currency",
+           currency: "BTC"
+       }).format(convertedBitcoin)
 }
-
+}
 function changeFlag(){
     const currencyName = document.getElementById("currency-name")
     const currencyImage = document.getElementById("img-converted")
@@ -49,11 +66,20 @@ function changeFlag(){
         currencyName.innerHTML = "Euro"
         currencyImage.src = "./assets/euro.png"
     }
+    if(currencySelect.value == "libra"){
+        currencyName.innerHTML = "Libra"
+        currencyImage.src = "./assets/libra.png"
+    }
+    if(currencySelect.value == "bitcoin"){
+        currencyName.innerHTML = "Bitcoin"
+        currencyImage.src = "./assets/bitcoin.png"
+    }
     convertValues()
 }
 
 currencySelect.addEventListener("change", changeFlag)
 convertButton.addEventListener("click", convertValues)
+
 
 
 
