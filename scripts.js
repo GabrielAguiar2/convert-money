@@ -1,15 +1,19 @@
 const convertButton = document.querySelector(".convert-button")
-const currencySelect = document.querySelector(".currency-select")
+const currencySelectConvert = document.querySelector(".currency-select-convert")
+const currencySelectConverted = document.querySelector(".currency-select-converted")
 
-console.log(convertButton)
+console.log(currencySelectConvert)
 
-function convertValues() {
+
+function convertValuesReal() {
     const inputCurrencyValue = document.querySelector(".input-currency").value
     const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
     const currencyValueConverted = document.querySelector(".currency-value")
 
-    console.log(currencySelect.value) 
-    
+    if ((currencySelectConvert.value) == (currencySelectConverted.value)) {
+        alert("Selecione moedas diferente!");
+    }
+
     //Valores do dia 01.30.2024
     const dolarAtual = 4.95
     const euroAtual = 5.37
@@ -25,60 +29,97 @@ function convertValues() {
         style: "currency",
         currency: "BRL"
     }).format(inputCurrencyValue)
-    
-    if (currencySelect.value == "dolar") {
-              
 
+    if (currencySelectConverted.value == "dolar") {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
         }).format(convertedDolar)
     }
 
-    if (currencySelect.value == "euro") {
-         currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+    if (currencySelectConverted.value == "euro") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
         }).format(convertedEuro)
     }
-    if (currencySelect.value == "libra") {
+    if (currencySelectConverted.value == "libra") {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
-           style: "currency",
-           currency: "GBP"
-       }).format(convertedLibra)
+            style: "currency",
+            currency: "GBP"
+        }).format(convertedLibra)
     }
-    if (currencySelect.value == "bitcoin") {
+    if (currencySelectConverted.value == "bitcoin") {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-           style: "currency",
-           currency: "BTC"
-       }).format(convertedBitcoin)
+            style: "currency",
+            currency: "BTC"
+        }).format(convertedBitcoin)
+    }
 }
-}
-function changeFlag(){
-    const currencyName = document.getElementById("currency-name")
-    const currencyImage = document.getElementById("img-converted")
+function changeFlagConvert() {
+    
+    const currencyConvert = document.getElementById("currency-convert")
+    const imageConvert = document.getElementById("img-convert")
 
-    if(currencySelect.value == "dolar"){
-        currencyName.innerHTML = "Dolar"
-        currencyImage.src = "./assets/dolar.png"
+    if (currencySelectConvert.value == "dolar") {
+        currencyConvert.innerHTML = "Dolar"
+        imageConvert.src = "./assets/dolar.png"
     }
-    if(currencySelect.value == "euro"){
-        currencyName.innerHTML = "Euro"
-        currencyImage.src = "./assets/euro.png"
+    if (currencySelectConvert.value == "euro") {
+        currencyConvert.innerHTML = "Euro"
+        imageConvert.src = "./assets/euro.png"
     }
-    if(currencySelect.value == "libra"){
-        currencyName.innerHTML = "Libra"
-        currencyImage.src = "./assets/libra.png"
+    if (currencySelectConvert.value == "libra") {
+        currencyConvert.innerHTML = "Libra"
+        imageConvert.src = "./assets/libra.png"
     }
-    if(currencySelect.value == "bitcoin"){
-        currencyName.innerHTML = "Bitcoin"
-        currencyImage.src = "./assets/bitcoin.png"
+    if (currencySelectConvert.value == "bitcoin") {
+        currencyConvert.innerHTML = "Bitcoin"
+        imageConvert.src = "./assets/bitcoin.png"
     }
-    convertValues()
+    if (currencySelectConvert.value == "real") {
+        currencyConvert.innerHTML = "Real"
+        imageConvert.src = "./assets/real.png"
+    }
+    if ((currencySelectConvert.value) == (currencySelectConverted.value)) {
+        alert("Selecione moedas diferente!");
+    }
+
 }
 
-currencySelect.addEventListener("change", changeFlag)
-convertButton.addEventListener("click", convertValues)
+function changeFlagConverted() {
+    
+    const currencyConverted = document.getElementById("currency-converted")
+    const imageConverted = document.getElementById("img-converted")
+
+    if (currencySelectConverted.value == "dolar") {
+        currencyConverted.innerHTML = "Dolar"
+        imageConverted.src = "./assets/dolar.png"
+    }
+    if (currencySelectConverted.value == "euro") {
+        currencyConverted.innerHTML = "Euro"
+        imageConverted.src = "./assets/euro.png"
+    }
+    if (currencySelectConverted.value == "libra") {
+        currencyConverted.innerHTML = "Libra"
+        imageConverted.src = "./assets/libra.png"
+    }
+    if (currencySelectConverted.value == "bitcoin") {
+        currencyConverted.innerHTML = "Bitcoin"
+        imageConverted.src = "./assets/bitcoin.png"
+    }
+    if (currencySelectConverted.value == "real") {
+        currencyConverted.innerHTML = "Real"
+        imageConverted.src = "./assets/real.png"
+    }
+    if ((currencySelectConvert.value) == (currencySelectConverted.value)) {
+        alert("Selecione moedas diferente!");
+    }
+    convertValuesReal()
+}
+currencySelectConvert.addEventListener("change", changeFlagConvert)
+currencySelectConverted.addEventListener("change", changeFlagConverted)
+convertButton.addEventListener("click", convertValuesReal)
 
 
 
