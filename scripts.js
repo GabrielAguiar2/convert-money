@@ -5,26 +5,29 @@ const currencySelectConverted = document.querySelector(".currency-select-convert
 
 const currencyValueConvert = document.querySelector(".currency-value-to-convert")
 const currencyValueConverted = document.querySelector(".currency-value")
+
 const inputCurrencyValue = document.querySelector(".input-currency")
 
+const switchCurrency = document.querySelector('.change')
 
 
-function convertValues(){
+async function convertValues(){
     if ((currencySelectConvert.value) == (currencySelectConverted.value)) {
         alert("Selecione moedas diferente! \n\nA página irá recarregar!");
         window.location.reload(true);
     }
+    const convertBRL = await fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,GBP-BRL").then(res => res.json())
+   
+    const dolarAtual = convertBRL.USDBRL.high
+    const euroAtual = convertBRL.EURBRL.high
+    const libraAtual = convertBRL.GBPBRL.high
+    const bitcoinAtual = convertBRL.BTCBRL.high
 
     if(currencySelectConvert.value == "real"){
         console.log(currencySelectConvert.value)
         console.log(inputCurrencyValue.value)
            
-            //Valores do dia 01.30.2024
-            const dolarAtual = 4.95
-            const euroAtual = 5.37
-            const libraAtual = 6.29
-            const bitcoinAtual = 215286.49
-        
+              
             const convertedDolar = inputCurrencyValue.value / dolarAtual
             const convertedEuro = inputCurrencyValue.value / euroAtual
             const convertedLibra = inputCurrencyValue.value / libraAtual
@@ -64,15 +67,14 @@ function convertValues(){
 
     if(currencySelectConvert.value == "dolar"){
       
-            console.log(currencySelectConvert.value)
-            console.log(inputCurrencyValue.value)
-            
-            //Valores do dia 01.30.2024
-            const realAtual = 0.20
-            const euroAtual = 1.09
-            const libraAtual = 1.27
-            const bitcoinAtual = 43441.60
-        
+            const convertUSD = await fetch("https://economia.awesomeapi.com.br/json/last/BRL-USD,EUR-USD,BTC-USD,GBP-USD").then(res => res.json())
+
+            const realAtual = convertUSD.BRLUSD.high
+            const euroAtual = convertUSD.EURUSD.high
+            const libraAtual = convertUSD.GBPUSD.high
+            const bitcoinAtual = convertUSD.BTCUSD.high
+
+       
             const convertedReal = inputCurrencyValue.value / realAtual
             const convertedEuro = inputCurrencyValue.value / euroAtual
             const convertedLibra = inputCurrencyValue.value / libraAtual
@@ -113,15 +115,13 @@ function convertValues(){
 
         if(currencySelectConvert.value == "euro"){
       
-            console.log(currencySelectConvert.value)
-            console.log(inputCurrencyValue.value)
+            const convertEUR = await fetch("https://economia.awesomeapi.com.br/json/last/BRL-EUR,USD-EUR,BTC-EUR,GBP-EUR").then(res => res.json())
             
-            //Valores do dia 01.30.2024
-            const realAtual = 0.19
-            const dolarAtual = 0.92
-            const libraAtual = 1.17
-            const bitcoinAtual = 40017.70
-        
+            const realAtual = convertEUR.BRLEUR.high
+            const dolarAtual = convertEUR.USDEUR.high
+            const libraAtual = convertEUR.GBPEUR.high
+            const bitcoinAtual = convertEUR.BTCEUR.high
+
             const convertedReal = inputCurrencyValue.value / realAtual
             const convertedDolar = inputCurrencyValue.value / dolarAtual
             const convertedLibra = inputCurrencyValue.value / libraAtual
@@ -163,19 +163,17 @@ function convertValues(){
 
         if(currencySelectConvert.value == "libra"){
       
-            console.log(currencySelectConvert.value)
-            console.log(inputCurrencyValue.value)
+            const convertGBP = await fetch("https://economia.awesomeapi.com.br/json/last/BRL-GBP,USD-GBP,EUR-GBP").then(res => res.json())
             
-            //Valores do dia 01.30.2024
-            const realAtual = 0.16
-            const dolarAtual = 0.79
-            const euroAtual = 0.85
-            const bitcoinAtual = 34182.81
+            const realAtual = convertGBP.BRLGBP.high
+            const dolarAtual = convertGBP.USDGBP.high
+            const euroAtual = convertGBP.EURGBP.high
+           // const bitcoinAtual = convertGBP.BTCGBP.high
         
             const convertedReal = inputCurrencyValue.value / realAtual
             const convertedDolar = inputCurrencyValue.value / dolarAtual
             const convertedEuro = inputCurrencyValue.value / euroAtual
-            const convertedBitcoin = inputCurrencyValue.value / bitcoinAtual
+         //   const convertedBitcoin = inputCurrencyValue.value / bitcoinAtual
         
             currencyValueConvert.innerHTML = new Intl.NumberFormat("en-GB", {
                 style: "currency",
@@ -212,14 +210,12 @@ function convertValues(){
 
         if(currencySelectConvert.value == "bitcoin"){
       
-            console.log(currencySelectConvert.value)
-            console.log(inputCurrencyValue.value)
+            const convertBTC = await fetch("https://economia.awesomeapi.com.br/json/last/BRL-GBP,USD-GBP,EUR-GBP").then(res => res.json())
             
-            //Valores do dia 01.30.2024
-            const realAtual = 0.0000047
-            const dolarAtual = 0.000023
-            const euroAtual = 0.000025
-            const libraAtual = 0.000029
+            const realAtual = convertGBP.BRLGBP.high
+            const dolarAtual = convertGBP.USDGBP.high
+            const euroAtual = convertGBP.EURGBP.high
+           // const bitcoinAtual = convertGBP.BTCGBP.high
         
             const convertedReal = inputCurrencyValue.value / realAtual
             const convertedDolar = inputCurrencyValue.value / dolarAtual
@@ -262,7 +258,7 @@ function convertValues(){
 }
 
 
-function changeFlagConvert() {
+function changeFlagConvert(teste2) {
     
     const currencyConvert = document.getElementById("currency-convert")
     const imageConvert = document.getElementById("img-convert")
@@ -288,9 +284,10 @@ function changeFlagConvert() {
         imageConvert.src = "./assets/real.png"
     }
     convertValues()
+    return changeFlagConvert
 }
 
-function changeFlagConverted() {
+function changeFlagConverted(teste) {
     
     const currencyConverted = document.getElementById("currency-converted")
     const imageConverted = document.getElementById("img-converted")
@@ -319,9 +316,17 @@ function changeFlagConverted() {
     
 }
 
+function changeCurrency(){
+    if(switchCurrency){
+        currencySelectConvert = currencySelectConverted
+    }
+    convertValues()
+}
+
 convertButton.addEventListener("click", convertValues)
 currencySelectConvert.addEventListener("change", changeFlagConvert)
 currencySelectConverted.addEventListener("change", changeFlagConverted)
+switchCurrency.addEventListener("change", changeCurrency)
 
 
 

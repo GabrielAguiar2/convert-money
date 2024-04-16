@@ -45,7 +45,7 @@ select, input{
     cursor: pointer;
 }
 
-button{
+.convert-button{
     border-radius: 5px;
     background: #772FD3;
     width: 100%;
@@ -75,6 +75,12 @@ section{
     margin: 15px 0;
 }
 
+.change{
+    border: none;
+    display: block;
+    margin-left: 40%;
+}
+
 div{
     display: flex; /*por padrão ele deixa um do lado do outro*/
     flex-direction: column;
@@ -92,3 +98,4 @@ div{
     font-size: 20px;
     font-weight: 700;
 }
+
