@@ -22,6 +22,9 @@ main{
     border-radius: 20px;
     margin: 0 auto 40px;
     padding: 44px 24px 23px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 label{
@@ -75,11 +78,14 @@ section{
     margin: 15px 0;
 }
 
-.change{
+#change{
     border: none;
-    display: block;
-    margin-left: 40%;
+    background: #F4F4F4;
+    width: 100px;
+    align-self: center;
+    cursor: pointer;
 }
+
 
 div{
     display: flex; /*por padrão ele deixa um do lado do outro*/
