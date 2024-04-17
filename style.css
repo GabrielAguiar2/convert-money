@@ -78,7 +78,7 @@ section{
 .change{
     border: none;
     display: block;
-    margin-left: 40%;
+    float: right;
 }
 
 div{
