@@ -316,17 +316,12 @@ function changeFlagConverted(teste) {
     
 }
 
-function changeCurrency(){
-    if(switchCurrency){
-        currencySelectConvert = currencySelectConverted
-    }
-    convertValues()
-}
+
 
 convertButton.addEventListener("click", convertValues)
 currencySelectConvert.addEventListener("change", changeFlagConvert)
 currencySelectConverted.addEventListener("change", changeFlagConverted)
-switchCurrency.addEventListener("change", changeCurrency)
+
 
 
 
