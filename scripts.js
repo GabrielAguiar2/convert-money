@@ -115,6 +115,7 @@ async function convertValues(){
 
         if(currencySelectConvert.value == "euro"){
       
+            
             const convertEUR = await fetch("https://economia.awesomeapi.com.br/json/last/BRL-EUR,USD-EUR,BTC-EUR,GBP-EUR").then(res => res.json())
             
             const realAtual = convertEUR.BRLEUR.high
@@ -131,7 +132,6 @@ async function convertValues(){
                 style: "currency",
                 currency: "EUR"
             }).format(inputCurrencyValue.value)
-                      
         
             if (currencySelectConverted.value == "real") {
                 currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
@@ -168,18 +168,17 @@ async function convertValues(){
             const realAtual = convertGBP.BRLGBP.high
             const dolarAtual = convertGBP.USDGBP.high
             const euroAtual = convertGBP.EURGBP.high
-           // const bitcoinAtual = convertGBP.BTCGBP.high
+            const bitcoinAtual = 51083.02 // Valor dia 04.18.2024 --> Ainda fazendo ajustes na API
         
             const convertedReal = inputCurrencyValue.value / realAtual
             const convertedDolar = inputCurrencyValue.value / dolarAtual
             const convertedEuro = inputCurrencyValue.value / euroAtual
-         //   const convertedBitcoin = inputCurrencyValue.value / bitcoinAtual
+            const convertedBitcoin = inputCurrencyValue.value / bitcoinAtual
         
             currencyValueConvert.innerHTML = new Intl.NumberFormat("en-GB", {
                 style: "currency",
                 currency: "GBP"
             }).format(inputCurrencyValue.value)
-                      
         
             if (currencySelectConverted.value == "real") {
                 currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
@@ -209,56 +208,57 @@ async function convertValues(){
         }
 
         if(currencySelectConvert.value == "bitcoin"){
-      
-            const convertBTC = await fetch("https://economia.awesomeapi.com.br/json/last/BRL-GBP,USD-GBP,EUR-GBP").then(res => res.json())
             
-            const realAtual = convertGBP.BRLGBP.high
-            const dolarAtual = convertGBP.USDGBP.high
-            const euroAtual = convertGBP.EURGBP.high
-           // const bitcoinAtual = convertGBP.BTCGBP.high
+            alert("Bitcoin ainda não está consumindo API em tempo real \n\n A página irá recarregar!")
+            window.location.reload(true);
+            // const convertBTC = await fetch("https://economia.awesomeapi.com.br/json/last/BRL-GBP,USD-GBP,EUR-GBP").then(res => res.json())
+            
+            // const realAtual = convertGBP.BRLGBP.high
+            // const dolarAtual = convertGBP.USDGBP.high
+            // const euroAtual = convertGBP.EURGBP.high
+            // const libraAtual = 0.000020
         
-            const convertedReal = inputCurrencyValue.value / realAtual
-            const convertedDolar = inputCurrencyValue.value / dolarAtual
-            const convertedEuro = inputCurrencyValue.value / euroAtual
-            const convertedLibra = inputCurrencyValue.value / libraAtual
+            // const convertedReal = inputCurrencyValue.value / realAtual
+            // const convertedDolar = inputCurrencyValue.value / dolarAtual
+            // const convertedEuro = inputCurrencyValue.value / euroAtual
+            // const convertedLibra = inputCurrencyValue.value / libraAtual
         
-            currencyValueConvert.innerHTML = new Intl.NumberFormat("de-DE", {
-                style: "currency",
-                currency: "BTC"
-            }).format(inputCurrencyValue.value)
-                      
+            // currencyValueConvert.innerHTML = new Intl.NumberFormat("de-DE", {
+            //     style: "currency",
+            //     currency: "BTC"
+            // }).format(inputCurrencyValue.value)                 
         
-            if (currencySelectConverted.value == "real") {
-                currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
-                    style: "currency",
-                    currency: "BRL"
-                }).format(convertedReal)
-            }
+            // if (currencySelectConverted.value == "real") {
+            //     currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+            //         style: "currency",
+            //         currency: "BRL"
+            //     }).format(convertedReal)
+            // }
         
-            if (currencySelectConverted.value == "dolar") {
-                currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: "USD"
-                }).format(convertedDolar)
-            }
-            if (currencySelectConverted.value == "euro") {
-                currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-                    style: "currency",
-                    currency: "EUR"
-                }).format(convertedEuro)
-            }
-            if (currencySelectConverted.value == "libra") {
-                currencyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
-                    style: "currency",
-                    currency: "GBP"
-                }).format(convertedLibra)
-            }
+            // if (currencySelectConverted.value == "dolar") {
+            //     currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            //         style: "currency",
+            //         currency: "USD"
+            //     }).format(convertedDolar)
+            // }
+            // if (currencySelectConverted.value == "euro") {
+            //     currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            //         style: "currency",
+            //         currency: "EUR"
+            //     }).format(convertedEuro)
+            // }
+            // if (currencySelectConverted.value == "libra") {
+            //     currencyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
+            //         style: "currency",
+            //         currency: "GBP"
+            //     }).format(convertedLibra)
+            // }
         }
         
 }
 
 
-function changeFlagConvert(teste2) {
+function changeFlagConvert() {
     
     const currencyConvert = document.getElementById("currency-convert")
     const imageConvert = document.getElementById("img-convert")
@@ -287,7 +287,7 @@ function changeFlagConvert(teste2) {
     return changeFlagConvert
 }
 
-function changeFlagConverted(teste) {
+function changeFlagConverted() {
     
     const currencyConverted = document.getElementById("currency-converted")
     const imageConverted = document.getElementById("img-converted")
@@ -315,8 +315,6 @@ function changeFlagConverted(teste) {
     convertValues()
     
 }
-
-
 
 convertButton.addEventListener("click", convertValues)
 currencySelectConvert.addEventListener("change", changeFlagConvert)
