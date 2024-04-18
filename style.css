@@ -75,12 +75,6 @@ section{
     margin: 15px 0;
 }
 
-.change{
-    border: none;
-    display: block;
-    margin-left: 40%;
-}
-
 div{
     display: flex; /*por padrão ele deixa um do lado do outro*/
     flex-direction: column;
