@@ -57,6 +57,7 @@ select, input{
     color: #FFFFFF;
     cursor: pointer;
 }
+
 button:hover{
     opacity: 0.8;
 }
@@ -80,14 +81,6 @@ section{
     height: 50px;
     width: 50px;
     align-self: center;
-}
-
-#switch{
-    border: none;
-    background: #F4F4F4;
-    width: 100px;
-    align-self: center;
-    cursor: pointer;
 }
 
 .currency-info{
