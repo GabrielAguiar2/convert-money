@@ -73,9 +73,21 @@ section{
     display: flex; /*por padrão ele deixa um do lado do outro*/
     flex-direction: column;
     align-items: center;
+
+    #informativo{
+        align-self: flex-end;
+            }
 }
 .arrow{
     margin: 15px 0;
+}
+
+#switch{
+    border: none;
+    background: #F4F4F4;
+    width: 100px;
+    align-self: center;
+    cursor: pointer;
 }
 
 
@@ -97,3 +109,23 @@ div{
     font-weight: 700;
 }
 
+#texto{
+    padding:20px;
+    font-family:Arial;
+    text-align:center;
+    color:white;
+    opacity:0;
+    transition: opacity .2s linear;
+    background-color:rgba(0,0,0,.7);
+  }
+
+#logo-info{
+    width: 20px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+#logo-info:hover{
+    opacity: 0.5;
+
+}
