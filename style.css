@@ -33,6 +33,14 @@ label{
     font-size: 14px;
 }
 
+#switch{
+    border: none;
+    background: #F4F4F4;
+    width: 100px;
+    align-self: center;
+    cursor: pointer;
+}
+
 select, input{
     background: #FFFFFF;
     border: 1px solid #BBBBBB;
